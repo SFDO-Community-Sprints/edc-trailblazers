@@ -1,10 +1,8 @@
 # edc-trailblazers
-Best practices for the new Education Cloud products
-
-This is a sample README.md file you can use to update your project. New project repos will use this template when they are created.
+Best practices for Education Cloud
 
 # Project Name
-Please replace with your projects name
+EDU Cloud Trailblazers
 
 # Project Overview
 ## Vision & Goals
@@ -13,19 +11,18 @@ Please replace with your projects vision.
 * Goal 2
 
 ## Project Vertical
-Please replace with Nonprofit, Education, or Other (if Other, explain further)
+Education
 
 ## Trailblazer Group or Slack Channel Link (access required)
-Please replace with the URL for your Trailblazer Community group and/or Slack channel issued by the Commons program team.
+https://salesforce.enterprise.slack.com/archives/C07PL3SEVJ5
 
 ## How to Contribute:
-- Way 1.
+- Review the existing documentation 
 - Way 2. 
 - Way 3. 
 
 ## Project Resources and Documentation
-Documentation can be found in the repository [wiki] (URL for wiki where docs are stored)
-
+The current documentation related to this can be found in documents and videos in https://drive.google.com/drive/folders/1OJEtCXvbQNkcnF8y2A6XlY-LYgp2NbkO
 
 ***
 BELOW CONTENT TO USE TO CREATE YOUR FIRST WIKI PAGE TO HOUSE DETAILS ABOUT YOUR SPRINT PARTICIPATION. 
