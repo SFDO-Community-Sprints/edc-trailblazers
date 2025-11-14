@@ -1,0 +1,135 @@
+SOP: Managing Email Addresses for Person Accounts (Contact Point Email Records)
+Objective
+This SOP explains how to correctly set, update, and manage email addresses for Person Accounts using two supported methods:
+Directly editing the Email field on the Person Account
+
+
+Creating or modifying Contact Point Email records
+
+
+Salesforce enforces specific rules around primary email addresses and the synchronization between a Person Account’s Email field and the Primary Contact Point Email record.
+Behind the scenes, multiple Record-Triggered Flows manage:
+Automatic creation of Contact Point Email records
+
+
+Syncing the main Email field with the Primary record
+
+
+Validation of Primary status
+
+
+Timestamping (“Active From”)
+
+
+Enforcement of data integrity rules
+
+
+This SOP ensures consistent data entry and reduces errors by explaining how the automation behaves and what users should expect.
+
+Context: How Automation Works
+Salesforce uses Contact Point Email records to track the lifecycle of all email addresses associated with a person. Record-triggered flows run whenever a user:
+Edits the main Person Account Email field
+Creates or updates a Contact Point Email record
+Changes which email is marked Primary
+
+
+These flows are responsible for:
+1. Sync Logic
+Creating Contact Point Email records when the Person Account Email field is set
+Setting Active From automatically when not provided
+Updating the Person Account’s Email field when a new Primary is selected
+Ensuring only one Contact Point Email can be Primary at a time
+
+
+2. Validation Logic
+Preventing users from clearing the Primary email if other active emails exist
+Ensuring the Primary email is always reflected in the Person Account Email field
+
+
+3. Data Integrity
+Supporting multiple email types (personal, work, secondary)
+Allowing historical emails to remain on record without requiring end dates
+Allowing backdating of Active From when needed
+Ensuring accurate downstream behavior for communication and AI features
+
+
+Key Steps
+1. Setting the Email Directly on the Person Account
+Open a Person Account.
+Enter an email address in the Email field.
+Click Save.
+
+
+Automation Behavior
+A new Contact Point Email record is automatically created.
+Active From defaults to today’s date.
+The new record is automatically marked Primary.
+The system syncs the Person Account's Email field to that primary record.
+
+
+2. Creating a New Contact Point Email Record
+Go to the Related tab on the Person Account.
+Scroll to Contact Point Email.
+Click New.
+Enter:
+
+
+Email address
+Email Type (e.g., Personal, Work)
+Optional: Active From (you may backdate this)
+Optional: Primary checkbox
+Click Save.
+
+
+Automation Behavior
+If Primary is selected →
+ Flows update the Person Account Email field to this new value.
+If Primary is NOT selected →
+ The email is stored but does NOT change the Person Account Email.
+If Active From is left blank →
+ A flow automatically sets it to today.
+
+
+This allows you to store secondary or historical emails without affecting the main contact email.
+
+3. Updating the Primary Email
+Users have two options:
+Option A — Make an Existing Email the Primary
+Open the desired Contact Point Email record.
+Check Primary.
+Save.
+
+
+Automation Behavior
+The Person Account’s Email field updates to this new primary.
+The previous Primary record is automatically unselected.
+Active From stays as-is unless manually changed.
+
+
+Option B — Create a NEW Primary Email
+Create a new Contact Point Email record.
+Check Primary.
+Leave Active From blank if you want it to default to today.
+Save.
+
+
+Automation Behavior
+The Person Account Email reflects this new address immediately.
+The system timestamps the new record with Active From = today.
+The old Primary is unselected automatically.
+
+
+Cautionary Notes
+Do not attempt to directly manipulate the Person Account Email field to bypass Primary logic—flows will override your change via the Contact Point Email records.
+Only one Contact Point Email can be Primary at a time; flows enforce this.
+Leaving Active From blank is appropriate when the start date should be “today.”
+Use Contact Point Email records when maintaining multiple emails (work, personal, secondary) without changing the primary.
+Tips for Efficiency
+Use Contact Point Email records for historical accuracy, such as when a person changes workplaces or personal email providers.
+Backdate Active From only when needed—for example, when cleaning up legacy data.
+Always verify which email is Primary to understand what appears on the Person Account Email field.
+If an email on the Person Account “doesn’t look right,” check:
+Which Contact Point Email is Primary
+Whether a new record was created with Primary checked
+
+
