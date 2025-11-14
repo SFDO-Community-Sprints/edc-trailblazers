@@ -6,13 +6,9 @@ EDU Cloud Trailblazers
 
 # Project Overview
 ## Vision & Goals
-- Provide resources and foundational guidance to support the higher education industry in:
-- Understanding the Education Cloud Product
-- How it compares to the Education Data Architecture (EDA)
-- Documenting the specific use cases that are provided for in Education Cloud that were not included in the EDA
-- Aid in the decision whether/how/when to move to the Education Cloud product
-- Document considerations for implementing higher educations use cases in Education Cloud based on practical experience from the community
-- Provide a mechanism for the community to contribute their experiences
+Please replace with your projects vision.
+* Goal 1
+* Goal 2
 
 
 ## Project Vertical
@@ -20,11 +16,6 @@ Education
 
 ## Trailblazer Group or Slack Channel Link (access required)
 https://salesforce.enterprise.slack.com/archives/C07PL3SEVJ5
-
-## How to Contribute:
-- Review the existing documentation 
-- Way 2. 
-- Way 3. 
 
 ## Project Resources and Documentation
 The current documentation related to this can be found in documents and videos in https://drive.google.com/drive/folders/1OJEtCXvbQNkcnF8y2A6XlY-LYgp2NbkO
