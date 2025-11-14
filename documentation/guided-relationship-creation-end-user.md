@@ -11,17 +11,18 @@ This document provides a clear, step-by-step guide for team members to effective
 ### **Key Steps**
 
 1. **Access the Guided Relationship Creation Screenflow**  
-   * Open the application and navigate to the Guided Relationship Creation Screenflow.  
+   * Open the application and navigate to the Guided Relationship Create screen flow on the right of the screen on the contact or account respectively. 
 2. **Creating a Person-to-Person Relationship**  
    * Select the option for "Person-to-Person Relationship."  
    * Confirm that the person account (e.g., Thomas Drill-Trail Blazer) is pre-filled on the left.  
    * Enter the related contact’s name (e.g., Jane Masterson).  
    * Select the relationship type:  
-     * Advisor-to-Advisor (ensure you select the correct direction).  
+     * Advisee-to-Advisor (ensure you select the correct direction).  
    * Verify that the description indicates the correct relationship (e.g., Thomas Trailblazer is Jane Masterson's advisee).  
    * Set the start date for the relationship.  
    * Click "Next" to confirm the relationship creation.  
-   * Look for a success message indicating the relationship has been created.  
+   * Look for a success message indicating the relationship has been created.
+   * Click "Finish" to reset the screenflow and create more relationships if needed.
 3. **Creating a Contact-Contact Relationship**  
    * Navigate to the contact-contact relationships section to confirm the relationship is displayed.  
    * Note that an inverse record will be automatically created for the related contact.  
@@ -32,7 +33,8 @@ This document provides a clear, step-by-step guide for team members to effective
    * Specify the role (e.g., Thomas Trailblazer as an intern).  
    * Set the start date for the relationship.  
    * Click "Next" to confirm the relationship creation.  
-   * Verify that the relationship appears under contact-account relationships.  
+   * Verify that the relationship appears under contact-account relationships.
+   * Click "Finish" to reset the screenflow and create more relationships if needed.
 5. **Creating an Organization-to-Person Relationship**  
    * Select the option for "Organization-to-Person Relationship."  
    * Confirm that the organization (e.g., Connected University) is pre-filled.  
@@ -46,6 +48,7 @@ This document provides a clear, step-by-step guide for team members to effective
    * Set the start date for the relationship.  
    * Click "Next" to confirm the relationship creation.  
    * Verify that the account-account relationship is displayed and note the automatic creation of the inverse record.
+   * Click "Finish" to reset the screenflow and create more relationships if needed.
 
 ### **Cautionary Notes**
 
