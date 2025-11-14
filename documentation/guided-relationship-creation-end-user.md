@@ -4,7 +4,7 @@
 
 This screenflow was developed to address Education Cloud’s lack of an automated reciprocal relationships in Contact Contact Relationships, the lack of sync in Contact Contact and Account Contact Relationships, and because out-of-the-box Account Contact Relationships do not have individual start/end dates for a person’s many relationships to the same object. That is, a Person Account (Contact) can be related to an Account (a single Account Contact Relationship record) with a single start date and a single end date. The record does have a multi-select picklist for Role so the Contact can have many roles (e.g., current graduate student, alumnus, and parent). The problem, however, is that roles need to have their own start-and-end date. 
 
-So, this solution introduces a custom object (Contact Account Relationships) that users engage with while at the same time, creating records in the native Account Contact Relationship in the background. That background work was included in an abundance of caution, mostly because AI native to Salesforce will expect the records to be available natively, and we didn’t want to preclude AI’s use of them just because we introduced a custom object. 
+This solution introduces a custom object (Contact Account Relationships) that users engage with while also creating records in the native Account Contact Relationship in the background. That background work was included in an abundance of caution, mostly because AI native to Salesforce will expect the records to be available natively, and we didn’t want to preclude AI’s use of them just because we introduced a custom object. 
 
 This document provides a clear, step-by-step guide for team members to effectively create and manage relationships between person accounts and organization accounts using the Guided Relationship Creation Screenflow. This SOP aims to minimize misunderstandings and errors while maximizing productivity and accuracy in task execution.
 
@@ -12,7 +12,7 @@ This document provides a clear, step-by-step guide for team members to effective
 
 1. **Access the Guided Relationship Creation Screenflow**  
    * Open the application and navigate to the Guided Relationship Creation Screenflow.  
-2. **Creating a Person-to-Person Relationship**  
+2. **Creating a Person-to-Person (Contact-to-Contact) Relationship**  
    * Select the option for "Person-to-Person Relationship."  
    * Confirm that the person account (e.g., Thomas Drill-Trail Blazer) is pre-filled on the left.  
    * Enter the related contact’s name (e.g., Jane Masterson).  
@@ -22,8 +22,8 @@ This document provides a clear, step-by-step guide for team members to effective
    * Set the start date for the relationship.  
    * Click "Next" to confirm the relationship creation.  
    * Look for a success message indicating the relationship has been created.  
-3. **Creating a Contact-Contact Relationship**  
-   * Navigate to the contact-contact relationships section to confirm the relationship is displayed.  
+3. **Verifying a Contact-Contact Relationship**  
+   * Navigate to the contact-contact relationships section in the highlights panel to confirm the relationship is displayed.  
    * Note that an inverse record will be automatically created for the related contact.  
 4. **Creating a Person-to-Organization Relationship**  
    * Select the option for "Person-to-Organization Relationship."  
