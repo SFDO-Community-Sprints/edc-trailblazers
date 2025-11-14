@@ -51,7 +51,7 @@ This document provides a clear and comprehensive step-by-step guide for admins t
 ### **Tips for Efficiency**
 
 * Utilize pre-filled fields to minimize data entry errors.  
-* Regularly review existing relationships to ensure data integrity.  
+* Regularly audit existing relationships to ensure data integrity.  
 * Familiarize yourself with the automation flows to better understand how changes will affect related records.  
 * Keep documentation updated to reflect any changes in the process or system updates to the Education Cloud.
 
