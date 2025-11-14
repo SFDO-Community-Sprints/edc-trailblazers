@@ -1,0 +1,108 @@
+SOP: Managing Phone Numbers for Person Accounts (Contact Point Phone Records)
+Objective
+This SOP explains how to correctly add, update, and manage phone numbers for Person Accounts using both standard phone fields and Contact Point Phone records. Salesforce enforces specific rules around primary phone numbers to maintain data integrity and keep the main Phone field in sync.
+Behind the scenes, multiple Record-Triggered Flows manage the automation, syncing, and validation rules that control how phone numbers behave. These flows ensure:
+The Primary phone is always enforced
+The main Phone field stays synced to the primary Contact Point Phone
+Direct edits are blocked where appropriate
+New numbers generate corresponding Contact Point Phone records
+Historical numbers are retained
+
+
+This SOP provides step-by-step instructions for users and highlights how automation works to keep phone data consistent and reliable.
+
+Context: How Automation Works
+Salesforce does not natively handle complex phone-number lifecycle management for Person Accounts. To ensure correct behavior, the system uses multiple Record-Triggered Flows that run when:
+A phone field on a Person Account is changed
+
+
+A Contact Point Phone record is created or updated
+
+
+A Primary phone designation changes
+
+
+A user attempts to edit the main Phone field
+
+
+These flows perform the following:
+1. Sync Logic
+Updates the main Phone field to whichever Contact Point Phone is marked Primary
+Creates or updates Contact Point Phone records when a user edits standard phone fields
+Ensures the latest number is stored without deleting historical ones
+2. Validation Logic
+Prevents saving a phone number without selecting a Primary
+Prevents users from editing the main Phone field directly
+Enforces one and only one Primary record
+3. Data Integrity Logic
+Allows multiple numbers of the same type (e.g., two mobile numbers)
+Maintains historical values without requiring end dates
+Ensures downstream features (AI, integrations, compliance checks) receive consistent, clean data
+
+
+Key Steps
+1. Adding Phone Numbers from the Person Account Record
+Open a Person Account record.
+Enter values in any standard phone fields (Mobile, Work, etc.).
+Click Save.
+
+
+Automation Behavior
+A Record-Triggered Flow validates whether a Primary is selected.
+If a phone number exists with no primary selected, the flow blocks the save and displays:
+ “A primary phone must be selected if a phone number is entered.”
+
+
+
+2. Setting the Primary Phone
+Choose which phone number should be the Primary (e.g., Work).
+Save the record.
+
+
+Automation Behavior
+A flow updates the Phone field to match the Primary Contact Point Phone.
+Existing Contact Point Phone records are updated to reflect the change.
+Only one record remains Primary.
+3. Updating Phone Numbers from the Person Account
+Edit the Mobile, Home Phone, Work Phone or Oth
+Save the record.
+
+
+Automation Behavior
+A flow creates new Contact Point Phone records for new numbers.
+Existing numbers are retained as historical values.
+If multiple numbers share the same type, flows do not require end dates.
+The Primary record remains unchanged unless the user manually changes it.
+4. Creating or Managing Phone Numbers from Contact Point Phone
+Users may add numbers directly in the Contact Point Phone related list.
+To Add a New Number:
+Navigate to the Related tab.
+Open Contact Point Phone.
+Click New.
+Set:
+Phone Number
+Phone Type
+Primary checkbox (if applicable)
+Save.
+Automation Behavior
+A flow updates the Person Account’s main Phone field if Primary is selected.
+The previous Primary is automatically demoted to non-primary status.
+The Person Account refreshes to display the new Primary number.
+
+
+Cautionary Notes
+Do not edit the main Phone field directly — flows will block the edit and display a warning.
+Always ensure only one Primary phone is selected; flows enforce this, but incorrect selections can cause save errors.
+Remember that new records do not overwrite old phone numbers — the automation preserves history by design.
+
+
+Tips for Efficiency
+Use the Contact Point Phone related list for the cleanest view of all phone numbers and to manage Primary status.
+If the main Phone field looks incorrect, check:
+Which Contact Point Phone is Primary
+Whether a new number triggered new contact point records
+Periodically review old numbers and update Primary designation as needed to support accurate communication and downstream automation.
+
+
+
+
