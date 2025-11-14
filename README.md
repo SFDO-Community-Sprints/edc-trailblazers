@@ -6,9 +6,14 @@ EDU Cloud Trailblazers
 
 # Project Overview
 ## Vision & Goals
-Please replace with your projects vision.
-* Goal 1
-* Goal 2
+- Provide resources and foundational guidance to support the higher education industry in:
+- Understanding the Education Cloud Product
+- How it compares to the Education Data Architecture (EDA)
+- Documenting the specific use cases that are provided for in Education Cloud that were not included in the EDA
+- Aid in the decision whether/how/when to move to the Education Cloud product
+- Document considerations for implementing higher educations use cases in Education Cloud based on practical experience from the community
+- Provide a mechanism for the community to contribute their experiences
+
 
 ## Project Vertical
 Education
