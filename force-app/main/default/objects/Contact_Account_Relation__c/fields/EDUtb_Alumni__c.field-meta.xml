@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EDUtb_Alumni__c</fullName>
+    <description>Caution: This field was installed from an Education Trailblazers Association solution. Before editing, ensure changes won&apos;t break automation.</description>
+    <formula>EDUtb_Contact__r.EDUtb_Alumni__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Alumni</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

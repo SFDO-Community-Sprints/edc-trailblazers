@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EDUtb_Primary_Point_of_Contact__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Caution: This field was installed from an Education Trailblazers Association solution. Before editing, ensure changes won&apos;t break automation.</description>
+    <label>Primary Point of Contact</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

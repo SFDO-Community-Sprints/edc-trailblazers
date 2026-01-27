@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EDUtb_End_Date__c</fullName>
+    <description>Caution: This field was installed from an Education Trailblazers Association solution. Before editing, ensure changes won&apos;t break automation.</description>
+    <inlineHelpText>First day that this CAR is considered inactive (ie if this set as Jan 3, then on Jan 2 the record will be active and on Jan 3 it will be inactive)</inlineHelpText>
+    <label>End Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

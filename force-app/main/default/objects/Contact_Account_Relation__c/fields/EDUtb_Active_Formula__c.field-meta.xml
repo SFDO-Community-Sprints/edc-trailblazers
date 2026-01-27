@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EDUtb_Active_Formula__c</fullName>
+    <description>Caution: This field was installed from an Education Trailblazers Association solution. Before editing, ensure changes won&apos;t break automation.</description>
+    <formula>EDUtb_Start_Date__c &lt;= TODAY() &amp;&amp; (ISBLANK(EDUtb_End_Date__c) || TODAY() &lt;= EDUtb_End_Date__c)
+||
+(ISBLANK(EDUtb_End_Date__c) &amp;&amp; ISBLANK(EDUtb_Start_Date__c))
+||
+(TODAY() &lt;= EDUtb_End_Date__c &amp;&amp; ISBLANK(EDUtb_Start_Date__c))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Calculated using the Start Date and End Date</inlineHelpText>
+    <label>Active Formula</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

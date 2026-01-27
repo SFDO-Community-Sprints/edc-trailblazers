@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Update_Active_Checkbox</name>
+        <label>Update Active Checkbox</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IsActive</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_ActiveFormula</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>This before-save Flow updates the &apos;Active&apos; checkbox based on the Start Date and End Date.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>f_ActiveFormula</name>
+        <dataType>Boolean</dataType>
+        <expression>{!$Record.StartDate} &lt;= TODAY() &amp;&amp; (ISBLANK({!$Record.EndDate}) || TODAY() &lt;= {!$Record.EndDate})
+||
+(ISBLANK({!$Record.EndDate}) &amp;&amp; ISBLANK({!$Record.StartDate}))
+||
+(TODAY() &lt;= {!$Record.EndDate} &amp;&amp; ISBLANK({!$Record.StartDate}))</expression>
+    </formulas>
+    <interviewLabel>Account Contact Relationship - Before Save - Update Active Checkbox {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account Contact Relationship - Before Save - Update Active Checkbox</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Active_Checkbox</targetReference>
+        </connector>
+        <filterFormula>({!$Record.StartDate} &lt;= TODAY() &amp;&amp; (ISBLANK({!$Record.EndDate}) || TODAY() &lt;= {!$Record.EndDate})
+||
+(ISBLANK({!$Record.EndDate}) &amp;&amp; ISBLANK({!$Record.StartDate}))
+||
+(TODAY() &lt;= {!$Record.EndDate} &amp;&amp; ISBLANK({!$Record.StartDate})))
+
+&lt;&gt; {!$Record.IsActive}</filterFormula>
+        <object>AccountContactRelation</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
