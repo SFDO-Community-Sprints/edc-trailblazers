@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Alumnus</fullName>
+        <default>false</default>
+        <label>Alumnus</label>
+    </customValue>
+    <customValue>
+        <fullName>Athlete</fullName>
+        <default>false</default>
+        <label>Athlete</label>
+    </customValue>
+    <customValue>
+        <fullName>Board Member</fullName>
+        <default>false</default>
+        <label>Board Member</label>
+    </customValue>
+    <customValue>
+        <fullName>Board Officer</fullName>
+        <default>false</default>
+        <label>Board Officer</label>
+    </customValue>
+    <customValue>
+        <fullName>Client</fullName>
+        <default>false</default>
+        <label>Client</label>
+    </customValue>
+    <customValue>
+        <fullName>Donor</fullName>
+        <default>false</default>
+        <label>Donor</label>
+    </customValue>
+    <customValue>
+        <fullName>Education Decision Maker</fullName>
+        <default>false</default>
+        <label>Education Decision Maker</label>
+    </customValue>
+    <customValue>
+        <fullName>Employee</fullName>
+        <default>false</default>
+        <label>Employee</label>
+    </customValue>
+    <customValue>
+        <fullName>Household Member</fullName>
+        <default>false</default>
+        <label>Household Member</label>
+    </customValue>
+    <customValue>
+        <fullName>Intern</fullName>
+        <default>false</default>
+        <label>Intern</label>
+    </customValue>
+    <customValue>
+        <fullName>Member</fullName>
+        <default>false</default>
+        <label>Member</label>
+    </customValue>
+    <customValue>
+        <fullName>Military Affiliate</fullName>
+        <default>false</default>
+        <label>Military Affiliate</label>
+    </customValue>
+    <customValue>
+        <fullName>Spouse</fullName>
+        <default>false</default>
+        <label>Spouse</label>
+    </customValue>
+    <customValue>
+        <fullName>Student</fullName>
+        <default>false</default>
+        <label>Student</label>
+    </customValue>
+    <customValue>
+        <fullName>Trustee</fullName>
+        <default>false</default>
+        <label>Trustee</label>
+    </customValue>
+    <customValue>
+        <fullName>University Point of Contact</fullName>
+        <default>false</default>
+        <label>University Point of Contact</label>
+    </customValue>
+    <description>Describes the types of relationship that a person could have with a non-person Account (business, household, etc)</description>
+    <masterLabel>Contact Account Relationship Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

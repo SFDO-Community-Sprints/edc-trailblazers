@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EDUtb_Hierarchy_Type__c</fullName>
+    <description>When this field is populated it will automatically pass the selected value down to the related CCR or AAR.
+
+Caution: This field was installed from an Education Trailblazers Association solution. Before editing, ensure changes won&apos;t break automation.</description>
+    <inlineHelpText>When this field is populated it will automatically pass the selected value down to the related CCR or AAR upon creation.</inlineHelpText>
+    <label>Hierarchy Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Parent</fullName>
+                <default>false</default>
+                <label>Parent</label>
+            </value>
+            <value>
+                <fullName>Child</fullName>
+                <default>false</default>
+                <label>Child</label>
+            </value>
+            <value>
+                <fullName>Peer</fullName>
+                <default>false</default>
+                <label>Peer</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
