@@ -7,7 +7,7 @@
         <name>Add_New_Value_to_Roles_Field</name>
         <label>Add New Value to Roles Field</label>
         <locationX>182</locationX>
-        <locationY>1955</locationY>
+        <locationY>1163</locationY>
         <assignmentItems>
             <assignToReference>r_AccountContactRelation.Roles</assignToReference>
             <operator>AddItem</operator>
@@ -30,7 +30,7 @@
         <name>Set_create_values_for_AccountContactRelation</name>
         <label>Set create values for AccountContactRelation</label>
         <locationX>446</locationX>
-        <locationY>1847</locationY>
+        <locationY>1055</locationY>
         <assignmentItems>
             <assignToReference>r_AccountContactRelation.AccountId</assignToReference>
             <operator>Assign</operator>
@@ -64,37 +64,11 @@
         </connector>
     </assignments>
     <decisions>
-        <description>Checks to see if Person Employment lookup is populated</description>
-        <name>Does_CAR_have_a_related_PER</name>
-        <label>Does CAR have a related PER?</label>
-        <locationX>1034</locationX>
-        <locationY>731</locationY>
-        <defaultConnector>
-            <targetReference>Was_Active_Status_Changed</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
-        <rules>
-            <name>Yes7</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.EDUtb_Person_Employment__c</leftValueReference>
-                <operator>IsBlank</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Was_Start_or_End_Date_Updated</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-    </decisions>
-    <decisions>
         <description>Does the Contact_Account_Relation__c type already exist in the AccountContactRelation Roles multi-select picklist?</description>
         <name>Does_Value_Already_Exist_in_Roles_Field</name>
         <label>Does Value Already Exist in Roles Field?</label>
         <locationX>50</locationX>
-        <locationY>1847</locationY>
+        <locationY>1055</locationY>
         <defaultConnector>
             <targetReference>Add_New_Value_to_Roles_Field</targetReference>
         </defaultConnector>
@@ -116,7 +90,7 @@
         <name>Is_CAR_active</name>
         <label>Is CAR active?</label>
         <locationX>479</locationX>
-        <locationY>1523</locationY>
+        <locationY>731</locationY>
         <defaultConnector>
             <targetReference>Remove_CAR_relationship_from_ACR_Roles</targetReference>
         </defaultConnector>
@@ -138,63 +112,12 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Is_CAR_type_Employee</name>
-        <label>Is CAR type Employee?</label>
-        <locationX>418</locationX>
-        <locationY>731</locationY>
-        <defaultConnector>
-            <targetReference>Was_Active_Status_Changed</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
-        <rules>
-            <name>Yes8</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.EDUtb_Contact_s_Relationship_to_Account__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Employee</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Create_Person_Employment</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <description>Provides a decision branch for anything that should run on create only.</description>
-        <name>Is_Record_Being_Created</name>
-        <label>Is Record Being Created?</label>
-        <locationX>726</locationX>
-        <locationY>623</locationY>
-        <defaultConnector>
-            <targetReference>Does_CAR_have_a_related_PER</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
-        <rules>
-            <name>Yes5</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record__Prior.Id</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Is_CAR_type_Employee</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Need_to_Update_Person_s_Household_Account_field</name>
         <label>Need to Update Person&apos;s Household Account field?</label>
         <locationX>726</locationX>
         <locationY>323</locationY>
         <defaultConnector>
-            <targetReference>Is_Record_Being_Created</targetReference>
+            <targetReference>Was_Active_Status_Changed</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
@@ -221,35 +144,10 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Update_Person_Employment_on_CAR</name>
-        <label>Update Person Employment on CAR?</label>
-        <locationX>264</locationX>
-        <locationY>947</locationY>
-        <defaultConnector>
-            <targetReference>Was_Active_Status_Changed</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
-        <rules>
-            <name>Yes9</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>v_Person_Employment_Created</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_CAR</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Was_AccountContactRelation_Found</name>
         <label>Was AccountContactRelation Found?</label>
         <locationX>248</locationX>
-        <locationY>1739</locationY>
+        <locationY>947</locationY>
         <defaultConnector>
             <targetReference>Set_create_values_for_AccountContactRelation</targetReference>
         </defaultConnector>
@@ -274,7 +172,7 @@
         <name>Was_Active_Status_Changed</name>
         <label>Was Active Status Changed?</label>
         <locationX>726</locationX>
-        <locationY>1415</locationY>
+        <locationY>623</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>Yes2</name>
@@ -292,55 +190,7 @@
             <label>Yes</label>
         </rules>
     </decisions>
-    <decisions>
-        <name>Was_Start_or_End_Date_Updated</name>
-        <label>Was Start or End Date Updated?</label>
-        <locationX>880</locationX>
-        <locationY>839</locationY>
-        <defaultConnector>
-            <targetReference>Was_Active_Status_Changed</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
-        <rules>
-            <name>Yes6</name>
-            <conditionLogic>((1 AND 3) OR (2 AND 4))</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.EDUtb_Start_Date__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>$Record__Prior.EDUtb_Start_Date__c</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.EDUtb_End_Date__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>$Record__Prior.EDUtb_End_Date__c</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.EDUtb_Start_Date__c</leftValueReference>
-                <operator>IsBlank</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.EDUtb_End_Date__c</leftValueReference>
-                <operator>IsBlank</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Person_Employment</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-    </decisions>
-    <description>We use a custom object, Contact_Account_Relation__c, to manage relationships between Contacts and Accounts due to limitations with the standard AccountContactRelation object. However, this flow also maintains a &quot;behind-the-scenes&quot; record in AccountContactRelation to mirror the data stored in Contact_Account_Relation__c. This ensures an easier transition back to the standard object if it becomes more feature-rich in the future.
-
-The flow also searches for, creates, or updates Person Employment records for alumni.</description>
+    <description>We use a custom object, Contact_Account_Relation__c, to manage relationships between Contacts and Accounts due to limitations with the standard AccountContactRelation object. However, this flow also maintains a &quot;behind-the-scenes&quot; record in AccountContactRelation to mirror the data stored in Contact_Account_Relation__c. This ensures an easier transition back to the standard object if it becomes more feature-rich in the future.</description>
     <environments>Default</environments>
     <formulas>
         <name>f_IsNew</name>
@@ -372,102 +222,18 @@ The flow also searches for, creates, or updates Person Employment records for al
         <name>Create_AccountContactRelation</name>
         <label>Create AccountContactRelation</label>
         <locationX>446</locationX>
-        <locationY>1955</locationY>
+        <locationY>1163</locationY>
         <connector>
             <targetReference>Update_Allowed_to_Create_Update_to_false</targetReference>
         </connector>
         <inputReference>r_AccountContactRelation</inputReference>
-    </recordCreates>
-    <recordCreates>
-        <name>Create_Person_Employment</name>
-        <label>Create Person Employment</label>
-        <locationX>264</locationX>
-        <locationY>839</locationY>
-        <assignRecordIdToReference>v_Person_Employment_Created</assignRecordIdToReference>
-        <connector>
-            <targetReference>Update_Person_Employment_on_CAR</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>AccountId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.EDUtb_Account__c</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>EndDate</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>RelatedPersonId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.EDUtb_Contact__c</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>AccountId</field>
-            <value>
-                <elementReference>$Record.EDUtb_Account__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>EDUtb_Contact_Account_Relation__c</field>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>EDUtb_Data_Source__c</field>
-            <value>
-                <stringValue>From CAR</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>EndDate</field>
-            <value>
-                <elementReference>$Record.EDUtb_End_Date__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Name</field>
-            <value>
-                <elementReference>$Record.EDUtb_Account__r.Name</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Position</field>
-            <value>
-                <elementReference>$Record.EDUtb_Job_Title__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>RelatedPersonId</field>
-            <value>
-                <elementReference>$Record.EDUtb_Contact__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>StartDate</field>
-            <value>
-                <elementReference>$Record.EDUtb_Start_Date__c</elementReference>
-            </value>
-        </inputAssignments>
-        <object>PersonEmployment</object>
-        <operationMultMatchingRecords>None</operationMultMatchingRecords>
-        <operationOneMatchingRecord>None</operationOneMatchingRecord>
-        <operationZeroMatchingRecords>AddRecord</operationZeroMatchingRecords>
     </recordCreates>
     <recordLookups>
         <description>Gets the standard object AccountContactRelation for the same Account and Contact that this Contact_Account_Relation__c record is created for</description>
         <name>Get_AccountContactRelation_standard_obj_record</name>
         <label>Get AccountContactRelation (standard obj record)</label>
         <locationX>248</locationX>
-        <locationY>1631</locationY>
+        <locationY>839</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Was_AccountContactRelation_Found</targetReference>
@@ -496,7 +262,7 @@ The flow also searches for, creates, or updates Person Employment records for al
         <name>Update_AccountContactRelation</name>
         <label>Update AccountContactRelation</label>
         <locationX>182</locationX>
-        <locationY>2063</locationY>
+        <locationY>1271</locationY>
         <connector>
             <targetReference>Update_Allowed_to_Create_Update_to_false</targetReference>
         </connector>
@@ -506,7 +272,7 @@ The flow also searches for, creates, or updates Person Employment records for al
         <name>Update_Allowed_to_Create_Update_to_false</name>
         <label>Update Allowed to Create/Update to false</label>
         <locationX>248</locationX>
-        <locationY>2339</locationY>
+        <locationY>1547</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -524,28 +290,12 @@ The flow also searches for, creates, or updates Person Employment records for al
         <object>AccountContactRelation</object>
     </recordUpdates>
     <recordUpdates>
-        <name>Update_CAR</name>
-        <label>Update CAR</label>
-        <locationX>132</locationX>
-        <locationY>1055</locationY>
-        <connector>
-            <targetReference>Was_Active_Status_Changed</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>EDUtb_Person_Employment__c</field>
-            <value>
-                <elementReference>v_Person_Employment_Created</elementReference>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
-    <recordUpdates>
         <name>Update_Person_Account</name>
         <label>Update Person Account</label>
         <locationX>594</locationX>
         <locationY>431</locationY>
         <connector>
-            <targetReference>Is_Record_Being_Created</targetReference>
+            <targetReference>Was_Active_Status_Changed</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -563,36 +313,6 @@ The flow also searches for, creates, or updates Person Employment records for al
         </inputAssignments>
         <object>Contact</object>
     </recordUpdates>
-    <recordUpdates>
-        <name>Update_Person_Employment</name>
-        <label>Update Person Employment</label>
-        <locationX>748</locationX>
-        <locationY>947</locationY>
-        <connector>
-            <targetReference>Was_Active_Status_Changed</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.EDUtb_Person_Employment__c</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>EndDate</field>
-            <value>
-                <elementReference>$Record.EDUtb_End_Date__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>StartDate</field>
-            <value>
-                <elementReference>$Record.EDUtb_Start_Date__c</elementReference>
-            </value>
-        </inputAssignments>
-        <object>PersonEmployment</object>
-    </recordUpdates>
     <start>
         <locationX>600</locationX>
         <locationY>0</locationY>
@@ -608,7 +328,7 @@ The flow also searches for, creates, or updates Person Employment records for al
         <name>Remove_CAR_relationship_from_ACR_Roles</name>
         <label>Remove CAR relationship from ACR Roles</label>
         <locationX>710</locationX>
-        <locationY>1631</locationY>
+        <locationY>839</locationY>
         <flowName>Subflow_Remove_CAR_relationship_from_ACR_Roles</flowName>
         <inputAssignments>
             <name>r_inputCAR</name>
@@ -624,12 +344,5 @@ The flow also searches for, creates, or updates Person Employment records for al
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>AccountContactRelation</objectType>
-    </variables>
-    <variables>
-        <name>v_Person_Employment_Created</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
     </variables>
 </Flow>
