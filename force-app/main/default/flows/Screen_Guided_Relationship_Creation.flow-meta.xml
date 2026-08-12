@@ -28,6 +28,13 @@
                 <elementReference>Party_Role_Relationship_AAR.selectedChoiceValues</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>r_AccountAccountRelationship.HierarchyType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>v_HierarchyType</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Check_for_Existing_AAR</targetReference>
         </connector>
@@ -63,6 +70,13 @@
             <operator>Assign</operator>
             <value>
                 <elementReference>v_PartyRoleRelationshipId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>r_ContactContactRelationship.HierarchyType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>v_HierarchyType</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -388,6 +402,10 @@
         <outputAssignments>
             <assignToReference>v_PartyRoleRelationshipDisplayName</assignToReference>
             <field>Display_Name__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>v_HierarchyType</assignToReference>
+            <field>Hierarchy_Type__c</field>
         </outputAssignments>
         <valueField>Id</valueField>
     </dynamicChoiceSets>

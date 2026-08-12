@@ -136,13 +136,22 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Update_inverse_record</targetReference>
+                <targetReference>Update_Inverse_Record</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
     </decisions>
     <description>This flow is basically the same as the &quot;Contact Contact Relationship - After Save - Create/Sync Inverse Relationship&quot;. Any logic changes here likely should be made in that flow as well.</description>
     <environments>Default</environments>
+    <formulas>
+        <name>f_InverseHierarchyType</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.HierarchyType},
+&quot;Peer&quot;,&quot;Peer&quot;,
+&quot;Child&quot;,&quot;Parent&quot;,
+&quot;Parent&quot;,&quot;Child&quot;,
+&quot;&quot;)</expression>
+    </formulas>
     <formulas>
         <description>NOTE: this basically checks if any of the values being set in the &quot;Update inverse record&quot; node are different between the two records. One callout: mostly checks to see if the values are the same, but the PartyRoleRelation field shouldn&apos;t be the exact same - the records should have the inverse role of each other.</description>
         <name>f_InverseRecHadDiffValues</name>
@@ -151,7 +160,7 @@
    {!$Record.StartDate} != {!$Record.RelatedInverseRecord.StartDate},
    {!$Record.EndDate} != {!$Record.RelatedInverseRecord.EndDate},
    {!$Record.IsActive} != {!$Record.RelatedInverseRecord.IsActive},
-   TEXT({!$Record.HierarchyType}) != TEXT({!$Record.RelatedInverseRecord.HierarchyType}),
+   TEXT({!$Record.RelatedInverseRecord.HierarchyType}) != {!f_InverseHierarchyType},
    {!$Record.PartyRoleRelation.RelatedInverseRecordId} != {!$Record.RelatedInverseRecord.PartyRoleRelationId}
 )</expression>
     </formulas>
@@ -199,7 +208,7 @@
         <inputAssignments>
             <field>HierarchyType</field>
             <value>
-                <elementReference>$Record.HierarchyType</elementReference>
+                <elementReference>f_InverseHierarchyType</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -243,18 +252,10 @@
     </recordCreates>
     <recordUpdates>
         <description>NOTE: if you add/remove/change any of the field mapping here, make sure to also edit the formula &quot;f_InverseRecHasDiffValues&quot;</description>
-        <name>Update_inverse_record</name>
-        <label>Update inverse record</label>
+        <name>Update_Inverse_Record</name>
+        <label>Update Inverse Record</label>
         <locationX>50</locationX>
         <locationY>647</locationY>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.RelatedInverseRecordId</elementReference>
-            </value>
-        </filters>
         <inputAssignments>
             <field>EndDate</field>
             <value>
@@ -264,7 +265,13 @@
         <inputAssignments>
             <field>HierarchyType</field>
             <value>
-                <elementReference>$Record.HierarchyType</elementReference>
+                <elementReference>f_InverseHierarchyType</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>IsActive</field>
+            <value>
+                <elementReference>$Record.IsActive</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -279,7 +286,7 @@
                 <elementReference>$Record.StartDate</elementReference>
             </value>
         </inputAssignments>
-        <object>AccountAccountRelation</object>
+        <inputReference>$Record.RelatedInverseRecord</inputReference>
     </recordUpdates>
     <recordUpdates>
         <name>Update_inverse_record_to_be_Keep_in_Sync_false</name>
