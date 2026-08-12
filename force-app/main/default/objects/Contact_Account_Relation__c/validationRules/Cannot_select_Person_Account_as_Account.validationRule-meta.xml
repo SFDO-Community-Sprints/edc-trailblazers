@@ -2,7 +2,7 @@
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Cannot_select_Person_Account_as_Account</fullName>
     <active>true</active>
-    <errorConditionFormula>EDUtb_Account__r.RecordType.DeveloperName = &quot;PersonAccount&quot;</errorConditionFormula>
-    <errorDisplayField>EDUtb_Account__c</errorDisplayField>
+    <errorConditionFormula>Account__r.RecordType.DeveloperName = &quot;PersonAccount&quot;</errorConditionFormula>
+    <errorDisplayField>Account__c</errorDisplayField>
     <errorMessage>Please select a non-Person Account in the Account field. If you are looking to create a relationship between two people, please create a Contact Contact Relationship record</errorMessage>
 </ValidationRule>

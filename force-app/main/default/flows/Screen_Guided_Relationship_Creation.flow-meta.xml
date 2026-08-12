@@ -8,6 +8,13 @@
         <locationX>1421</locationX>
         <locationY>828</locationY>
         <assignmentItems>
+            <assignToReference>r_AccountAccountRelationship.RelatedAccountId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>AccountAccountRelationRelatedAccountId.recordId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
             <assignToReference>r_AccountAccountRelationship.IsActive</assignToReference>
             <operator>Assign</operator>
             <value>
@@ -68,7 +75,7 @@
         <locationX>1112</locationX>
         <locationY>540</locationY>
         <assignmentItems>
-            <assignToReference>r_ContactAccountRelationship.EDUtb_Account__c</assignToReference>
+            <assignToReference>r_ContactAccountRelationship.Account__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>r_AccountOnPageLoad.Id</elementReference>
@@ -100,7 +107,7 @@
         <locationX>823</locationX>
         <locationY>543</locationY>
         <assignmentItems>
-            <assignToReference>r_ContactAccountRelationship.EDUtb_Contact__c</assignToReference>
+            <assignToReference>r_ContactAccountRelationship.Contact__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>r_AccountOnPageLoad.PersonContactId</elementReference>
@@ -116,7 +123,7 @@
         <locationX>1113</locationX>
         <locationY>835</locationY>
         <assignmentItems>
-            <assignToReference>r_ContactAccountRelationship.EDUtb_IsActive__c</assignToReference>
+            <assignToReference>r_ContactAccountRelationship.IsActive__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <booleanValue>true</booleanValue>
@@ -132,7 +139,7 @@
         <locationX>823</locationX>
         <locationY>835</locationY>
         <assignmentItems>
-            <assignToReference>r_ContactAccountRelationship.EDUtb_IsActive__c</assignToReference>
+            <assignToReference>r_ContactAccountRelationship.IsActive__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <booleanValue>true</booleanValue>
@@ -368,7 +375,7 @@
     <dynamicChoiceSets>
         <name>choice_PartyRoleRelationship_AAR</name>
         <dataType>String</dataType>
-        <displayField>EDUtb_Display_Name__c</displayField>
+        <displayField>Display_Name__c</displayField>
         <filterLogic>and</filterLogic>
         <filters>
             <field>RelationshipObjectName</field>
@@ -380,14 +387,14 @@
         <object>PartyRoleRelation</object>
         <outputAssignments>
             <assignToReference>v_PartyRoleRelationshipDisplayName</assignToReference>
-            <field>EDUtb_Display_Name__c</field>
+            <field>Display_Name__c</field>
         </outputAssignments>
         <valueField>Id</valueField>
     </dynamicChoiceSets>
     <dynamicChoiceSets>
         <name>choice_PartyRoleRelationship_CCR</name>
         <dataType>String</dataType>
-        <displayField>EDUtb_Display_Name__c</displayField>
+        <displayField>Display_Name__c</displayField>
         <filterLogic>and</filterLogic>
         <filters>
             <field>RelationshipObjectName</field>
@@ -399,11 +406,11 @@
         <object>PartyRoleRelation</object>
         <outputAssignments>
             <assignToReference>v_PartyRoleRelationshipDisplayName</assignToReference>
-            <field>EDUtb_Display_Name__c</field>
+            <field>Display_Name__c</field>
         </outputAssignments>
         <outputAssignments>
             <assignToReference>v_HierarchyType</assignToReference>
-            <field>EDUtb_Hierarchy_Type__c</field>
+            <field>Hierarchy_Type__c</field>
         </outputAssignments>
         <outputAssignments>
             <assignToReference>v_PartyRoleRelationshipId</assignToReference>
@@ -524,31 +531,31 @@
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>EDUtb_IsActive__c</field>
+            <field>IsActive__c</field>
             <operator>EqualTo</operator>
             <value>
                 <booleanValue>true</booleanValue>
             </value>
         </filters>
         <filters>
-            <field>EDUtb_Account__c</field>
+            <field>Account__c</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>r_ContactAccountRelationship.EDUtb_Account__c</elementReference>
+                <elementReference>r_ContactAccountRelationship.Account__c</elementReference>
             </value>
         </filters>
         <filters>
-            <field>EDUtb_Contact__c</field>
+            <field>Contact__c</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>r_ContactAccountRelationship.EDUtb_Contact__c</elementReference>
+                <elementReference>r_ContactAccountRelationship.Contact__c</elementReference>
             </value>
         </filters>
         <filters>
-            <field>EDUtb_Contact_s_Relationship_to_Account__c</field>
+            <field>Contact_s_Relationship_to_Account__c</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>r_ContactAccountRelationship.EDUtb_Contact_s_Relationship_to_Account__c</elementReference>
+                <elementReference>r_ContactAccountRelationship.Contact_s_Relationship_to_Account__c</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -779,7 +786,7 @@
         <allowPause>false</allowPause>
         <fields>
             <name>dt_ExistingCAR</name>
-            <fieldText>&lt;p&gt;Error: A Contact Account Relationship of type {!r_ContactAccountRelationship.EDUtb_Contact_s_Relationship_to_Account__c} is already active between the selected individual and organization.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Error: A Contact Account Relationship of type {!r_ContactAccountRelationship.Contact_s_Relationship_to_Account__c} is already active between the selected individual and organization.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -1043,13 +1050,13 @@
                     <fieldType>ObjectProvided</fieldType>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
-                    <objectFieldReference>r_ContactAccountRelationship.EDUtb_Account__c</objectFieldReference>
+                    <objectFieldReference>r_ContactAccountRelationship.Account__c</objectFieldReference>
                 </fields>
                 <fields>
                     <fieldType>ObjectProvided</fieldType>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
-                    <objectFieldReference>r_ContactAccountRelationship.EDUtb_Start_Date__c</objectFieldReference>
+                    <objectFieldReference>r_ContactAccountRelationship.Start_Date__c</objectFieldReference>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -1066,13 +1073,13 @@
                     <fieldType>ObjectProvided</fieldType>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
-                    <objectFieldReference>r_ContactAccountRelationship.EDUtb_Contact__c</objectFieldReference>
+                    <objectFieldReference>r_ContactAccountRelationship.Contact__c</objectFieldReference>
                 </fields>
                 <fields>
                     <fieldType>ObjectProvided</fieldType>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
-                    <objectFieldReference>r_ContactAccountRelationship.EDUtb_End_Date__c</objectFieldReference>
+                    <objectFieldReference>r_ContactAccountRelationship.End_Date__c</objectFieldReference>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -1089,7 +1096,7 @@
             <fieldType>ObjectProvided</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>false</isRequired>
-            <objectFieldReference>r_ContactAccountRelationship.EDUtb_Contact_s_Relationship_to_Account__c</objectFieldReference>
+            <objectFieldReference>r_ContactAccountRelationship.Contact_s_Relationship_to_Account__c</objectFieldReference>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
@@ -1121,13 +1128,13 @@
                     <fieldType>ObjectProvided</fieldType>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
-                    <objectFieldReference>r_ContactAccountRelationship.EDUtb_Contact__c</objectFieldReference>
+                    <objectFieldReference>r_ContactAccountRelationship.Contact__c</objectFieldReference>
                 </fields>
                 <fields>
                     <fieldType>ObjectProvided</fieldType>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
-                    <objectFieldReference>r_ContactAccountRelationship.EDUtb_Start_Date__c</objectFieldReference>
+                    <objectFieldReference>r_ContactAccountRelationship.Start_Date__c</objectFieldReference>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -1144,13 +1151,13 @@
                     <fieldType>ObjectProvided</fieldType>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
-                    <objectFieldReference>r_ContactAccountRelationship.EDUtb_Account__c</objectFieldReference>
+                    <objectFieldReference>r_ContactAccountRelationship.Account__c</objectFieldReference>
                 </fields>
                 <fields>
                     <fieldType>ObjectProvided</fieldType>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
-                    <objectFieldReference>r_ContactAccountRelationship.EDUtb_End_Date__c</objectFieldReference>
+                    <objectFieldReference>r_ContactAccountRelationship.End_Date__c</objectFieldReference>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -1167,7 +1174,7 @@
             <fieldType>ObjectProvided</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>false</isRequired>
-            <objectFieldReference>r_ContactAccountRelationship.EDUtb_Contact_s_Relationship_to_Account__c</objectFieldReference>
+            <objectFieldReference>r_ContactAccountRelationship.Contact_s_Relationship_to_Account__c</objectFieldReference>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>

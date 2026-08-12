@@ -8,7 +8,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
-            <assignToReference>$Record.EDUtb_End_Date__c</assignToReference>
+            <assignToReference>$Record.End_Date__c</assignToReference>
             <operator>Assign</operator>
         </assignmentItems>
         <connector>
@@ -21,7 +21,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
-            <assignToReference>$Record.EDUtb_End_Date__c</assignToReference>
+            <assignToReference>$Record.End_Date__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>f_Yesterday</elementReference>
@@ -37,7 +37,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <assignmentItems>
-            <assignToReference>$Record.EDUtb_IsActive__c</assignToReference>
+            <assignToReference>$Record.IsActive__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>f_ActiveFormula</elementReference>
@@ -54,7 +54,7 @@
             <name>Yes</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.EDUtb_IsActive__c</leftValueReference>
+                <leftValueReference>$Record.IsActive__c</leftValueReference>
                 <operator>NotEqualTo</operator>
                 <rightValue>
                     <elementReference>f_ActiveFormula</elementReference>
@@ -79,21 +79,21 @@
             <name>Yes_Deactivated</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.EDUtb_IsActive__c</leftValueReference>
+                <leftValueReference>$Record.IsActive__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record__Prior.EDUtb_IsActive__c</leftValueReference>
+                <leftValueReference>$Record__Prior.IsActive__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.EDUtb_End_Date__c</leftValueReference>
+                <leftValueReference>$Record.End_Date__c</leftValueReference>
                 <operator>IsBlank</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -118,21 +118,21 @@
             <name>Yes_Reactivated</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.EDUtb_IsActive__c</leftValueReference>
+                <leftValueReference>$Record.IsActive__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record__Prior.EDUtb_IsActive__c</leftValueReference>
+                <leftValueReference>$Record__Prior.IsActive__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.EDUtb_End_Date__c</leftValueReference>
+                <leftValueReference>$Record.End_Date__c</leftValueReference>
                 <operator>IsBlank</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
@@ -149,11 +149,11 @@
     <formulas>
         <name>f_ActiveFormula</name>
         <dataType>Boolean</dataType>
-        <expression>{!$Record.EDUtb_Start_Date__c} &lt;= TODAY() &amp;&amp; (ISBLANK({!$Record.EDUtb_End_Date__c}) || TODAY() &lt;= {!$Record.EDUtb_End_Date__c})
+        <expression>{!$Record.Start_Date__c} &lt;= TODAY() &amp;&amp; (ISBLANK({!$Record.End_Date__c}) || TODAY() &lt;= {!$Record.End_Date__c})
 ||
-(ISBLANK({!$Record.EDUtb_End_Date__c}) &amp;&amp; ISBLANK({!$Record.EDUtb_Start_Date__c}))
+(ISBLANK({!$Record.End_Date__c}) &amp;&amp; ISBLANK({!$Record.Start_Date__c}))
 ||
-(TODAY() &lt;= {!$Record.EDUtb_End_Date__c} &amp;&amp; ISBLANK({!$Record.EDUtb_Start_Date__c}))</expression>
+(TODAY() &lt;= {!$Record.End_Date__c} &amp;&amp; ISBLANK({!$Record.Start_Date__c}))</expression>
     </formulas>
     <formulas>
         <name>f_Yesterday</name>
@@ -187,13 +187,13 @@
         <connector>
             <targetReference>Reactivated_Clear_End_Date</targetReference>
         </connector>
-        <filterFormula>({!$Record.EDUtb_Start_Date__c} &lt;= TODAY() &amp;&amp; (ISBLANK({!$Record.EDUtb_End_Date__c}) || TODAY() &lt;= {!$Record.EDUtb_End_Date__c})
+        <filterFormula>({!$Record.Start_Date__c} &lt;= TODAY() &amp;&amp; (ISBLANK({!$Record.End_Date__c}) || TODAY() &lt;= {!$Record.End_Date__c})
 ||
-(ISBLANK({!$Record.EDUtb_End_Date__c}) &amp;&amp; ISBLANK({!$Record.EDUtb_Start_Date__c}))
+(ISBLANK({!$Record.End_Date__c}) &amp;&amp; ISBLANK({!$Record.Start_Date__c}))
 ||
-(TODAY() &lt;= {!$Record.EDUtb_End_Date__c} &amp;&amp; ISBLANK({!$Record.EDUtb_Start_Date__c})))
+(TODAY() &lt;= {!$Record.End_Date__c} &amp;&amp; ISBLANK({!$Record.Start_Date__c})))
 
-&lt;&gt; {!$Record.EDUtb_IsActive__c}</filterFormula>
+&lt;&gt; {!$Record.IsActive__c}</filterFormula>
         <object>Contact_Account_Relation__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>

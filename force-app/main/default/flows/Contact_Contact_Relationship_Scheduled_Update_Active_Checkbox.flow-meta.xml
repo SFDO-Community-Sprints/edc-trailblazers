@@ -34,7 +34,7 @@ It is designed to catch scenarios where a record update did not occur, but the r
         <inputAssignments>
             <field>IsActive</field>
             <value>
-                <elementReference>$Record.EDUtb_Active_Formula__c</elementReference>
+                <elementReference>$Record.Active_Formula__c</elementReference>
             </value>
         </inputAssignments>
         <inputReference>$Record</inputReference>
@@ -54,7 +54,7 @@ It is designed to catch scenarios where a record update did not occur, but the r
             </value>
         </filters>
         <filters>
-            <field>EDUtb_Active_Formula__c</field>
+            <field>Active_Formula__c</field>
             <operator>EqualTo</operator>
             <value>
                 <booleanValue>true</booleanValue>
@@ -68,7 +68,7 @@ It is designed to catch scenarios where a record update did not occur, but the r
             </value>
         </filters>
         <filters>
-            <field>EDUtb_Active_Formula__c</field>
+            <field>Active_Formula__c</field>
             <operator>EqualTo</operator>
             <value>
                 <booleanValue>false</booleanValue>

@@ -36,7 +36,7 @@
                 <leftValueReference>Get_AccountContactRelation_standard_obj.Roles</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <elementReference>r_inputCAR.EDUtb_Contact_s_Relationship_to_Account__c</elementReference>
+                    <elementReference>r_inputCAR.Contact_s_Relationship_to_Account__c</elementReference>
                 </rightValue>
             </conditions>
             <connector>
@@ -75,10 +75,10 @@
         <expression>SUBSTITUTE(
      SUBSTITUTE(
           {!v_Roles},
-          TEXT({!r_inputCAR.EDUtb_Contact_s_Relationship_to_Account__c})+&apos;;&apos;,
+          TEXT({!r_inputCAR.Contact_s_Relationship_to_Account__c})+&apos;;&apos;,
           &apos;&apos;
      ),
-     &apos;;&apos;+TEXT({!r_inputCAR.EDUtb_Contact_s_Relationship_to_Account__c}),
+     &apos;;&apos;+TEXT({!r_inputCAR.Contact_s_Relationship_to_Account__c}),
      &apos;&apos;
 )</expression>
     </formulas>
@@ -125,14 +125,14 @@
             <field>AccountId</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>r_inputCAR.EDUtb_Account__c</elementReference>
+                <elementReference>r_inputCAR.Account__c</elementReference>
             </value>
         </filters>
         <filters>
             <field>ContactId</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>r_inputCAR.EDUtb_Contact__c</elementReference>
+                <elementReference>r_inputCAR.Contact__c</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -158,7 +158,7 @@
             </value>
         </filters>
         <inputAssignments>
-            <field>EDUtb_Allowed_to_Create_or_Update__c</field>
+            <field>Allowed_to_Create_or_Update__c</field>
             <value>
                 <booleanValue>true</booleanValue>
             </value>
@@ -185,7 +185,7 @@
             </value>
         </filters>
         <inputAssignments>
-            <field>EDUtb_Allowed_to_Create_or_Update__c</field>
+            <field>Allowed_to_Create_or_Update__c</field>
             <value>
                 <booleanValue>false</booleanValue>
             </value>

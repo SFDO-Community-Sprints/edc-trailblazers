@@ -45,7 +45,7 @@
             <name>Yes1</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.EDUtb_Keep_in_Sync_w_Inverse_Rel__c</leftValueReference>
+                <leftValueReference>$Record.Keep_in_Sync_w_Inverse_Rel__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -92,21 +92,21 @@
             <name>Yes4</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record__Prior.EDUtb_Keep_in_Sync_w_Inverse_Rel__c</leftValueReference>
+                <leftValueReference>$Record__Prior.Keep_in_Sync_w_Inverse_Rel__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.EDUtb_Keep_in_Sync_w_Inverse_Rel__c</leftValueReference>
+                <leftValueReference>$Record.Keep_in_Sync_w_Inverse_Rel__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>$Record.RelatedInverseRecord.EDUtb_Keep_in_Sync_w_Inverse_Rel__c</leftValueReference>
+                <leftValueReference>$Record.RelatedInverseRecord.Keep_in_Sync_w_Inverse_Rel__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -191,12 +191,6 @@
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>EDUtb_Keep_in_Sync_w_Inverse_Rel__c</field>
-            <value>
-                <elementReference>$Record.EDUtb_Keep_in_Sync_w_Inverse_Rel__c</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>EndDate</field>
             <value>
                 <elementReference>$Record.EndDate</elementReference>
@@ -212,6 +206,12 @@
             <field>IsActive</field>
             <value>
                 <elementReference>$Record.IsActive</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Keep_in_Sync_w_Inverse_Rel__c</field>
+            <value>
+                <elementReference>$Record.Keep_in_Sync_w_Inverse_Rel__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -295,7 +295,7 @@
             </value>
         </filters>
         <inputAssignments>
-            <field>EDUtb_Keep_in_Sync_w_Inverse_Rel__c</field>
+            <field>Keep_in_Sync_w_Inverse_Rel__c</field>
             <value>
                 <booleanValue>false</booleanValue>
             </value>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>EDUtb_Hierarchy_Type__c</fullName>
+    <fullName>Hierarchy_Type__c</fullName>
     <description>When this field is populated it will automatically pass the selected value down to the related CCR or AAR.
 
 Caution: This field was installed from an Education Trailblazers Association solution. Before editing, ensure changes won&apos;t break automation.</description>

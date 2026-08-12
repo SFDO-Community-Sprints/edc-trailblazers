@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>EDUtb_Contact_s_Relationship_to_Account__c</fullName>
+    <fullName>Contact_s_Relationship_to_Account__c</fullName>
     <inlineHelpText>Describes the way the Person is related to the Account
 
 ***If you add values to this picklist, you must also add them to the &quot;role&quot; Multi-select picklist on Account Contact Relationship object***

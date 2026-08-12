@@ -8,7 +8,7 @@
         <locationX>50</locationX>
         <locationY>395</locationY>
         <assignmentItems>
-            <assignToReference>$Record.EDUtb_Duplicate_Key__c</assignToReference>
+            <assignToReference>$Record.Duplicate_Key__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>f_DuplicateKey</elementReference>
@@ -25,7 +25,7 @@
             <name>Yes1</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.EDUtb_Duplicate_Key__c</leftValueReference>
+                <leftValueReference>$Record.Duplicate_Key__c</leftValueReference>
                 <operator>NotEqualTo</operator>
                 <rightValue>
                     <elementReference>f_DuplicateKey</elementReference>
@@ -41,17 +41,17 @@
     <formulas>
         <name>f_Active</name>
         <dataType>Boolean</dataType>
-        <expression>{!$Record.EDUtb_Start_Date__c} &lt;= TODAY() &amp;&amp; (ISBLANK({!$Record.EDUtb_End_Date__c}) || TODAY() &lt;= {!$Record.EDUtb_End_Date__c})
+        <expression>{!$Record.Start_Date__c} &lt;= TODAY() &amp;&amp; (ISBLANK({!$Record.End_Date__c}) || TODAY() &lt;= {!$Record.End_Date__c})
 ||
-(ISBLANK({!$Record.EDUtb_End_Date__c}) &amp;&amp; ISBLANK({!$Record.EDUtb_Start_Date__c}))
+(ISBLANK({!$Record.End_Date__c}) &amp;&amp; ISBLANK({!$Record.Start_Date__c}))
 ||
-(TODAY() &lt;= {!$Record.EDUtb_End_Date__c} &amp;&amp; ISBLANK({!$Record.EDUtb_Start_Date__c}))</expression>
+(TODAY() &lt;= {!$Record.End_Date__c} &amp;&amp; ISBLANK({!$Record.Start_Date__c}))</expression>
     </formulas>
     <formulas>
         <name>f_DuplicateKey</name>
         <dataType>String</dataType>
         <expression>IF({!f_Active} = TRUE,
-CASESAFEID({!$Record.EDUtb_Contact__c}) + &quot;-&quot; + TEXT({!$Record.EDUtb_Contact_s_Relationship_to_Account__c}) + &quot;-&quot; + CASESAFEID({!$Record.EDUtb_Account__c}),
+CASESAFEID({!$Record.Contact__c}) + &quot;-&quot; + TEXT({!$Record.Contact_s_Relationship_to_Account__c}) + &quot;-&quot; + CASESAFEID({!$Record.Account__c}),
 &quot;&quot;)</expression>
     </formulas>
     <interviewLabel>Contact Account Relationship - Before Save - Duplicate Key {!$Flow.CurrentDateTime}</interviewLabel>

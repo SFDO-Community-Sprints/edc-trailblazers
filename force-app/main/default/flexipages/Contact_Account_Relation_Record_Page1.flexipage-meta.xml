@@ -20,6 +20,10 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>3</value>
                 </componentInstanceProperties>
@@ -81,7 +85,7 @@
                     <name>uiBehavior</name>
                     <value>required</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.EDUtb_Contact__c</fieldItem>
+                <fieldItem>Record.Contact__c</fieldItem>
                 <identifier>RecordContact_cField</identifier>
             </fieldInstance>
         </itemInstances>
@@ -91,7 +95,7 @@
                     <name>uiBehavior</name>
                     <value>required</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.EDUtb_Contact_s_Relationship_to_Account__c</fieldItem>
+                <fieldItem>Record.Contact_s_Relationship_to_Account__c</fieldItem>
                 <identifier>RecordContact_s_Relationship_to_Account_cField</identifier>
             </fieldInstance>
         </itemInstances>
@@ -101,42 +105,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.EDUtb_Military_Service_Status__c</fieldItem>
-                <identifier>RecordMilitary_Service_Status_cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.EDUtb_Contact_s_Relationship_to_Account__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Military Affiliate</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.EDUtb_Start_Date__c</fieldItem>
+                <fieldItem>Record.Start_Date__c</fieldItem>
                 <identifier>RecordStart_Date_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.EDUtb_Person_Employment__c</fieldItem>
-                <identifier>RecordPerson_Employment_cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.EDUtb_Alumni__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <name>Facet-409eceb7-9875-4bea-8065-a2bdbe3e6a62</name>
@@ -159,7 +129,7 @@
                     <name>uiBehavior</name>
                     <value>required</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.EDUtb_Account__c</fieldItem>
+                <fieldItem>Record.Account__c</fieldItem>
                 <identifier>RecordAccount_cField</identifier>
             </fieldInstance>
         </itemInstances>
@@ -169,30 +139,7 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.EDUtb_Job_Title__c</fieldItem>
-                <identifier>RecordJob_Title_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>flexipage:blankSpace</componentName>
-                <identifier>flexipage_blankSpace</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.EDUtb_Contact_s_Relationship_to_Account__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Military Affiliate</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.EDUtb_End_Date__c</fieldItem>
+                <fieldItem>Record.End_Date__c</fieldItem>
                 <identifier>RecordEnd_Date_cField</identifier>
             </fieldInstance>
         </itemInstances>
@@ -202,7 +149,7 @@
                     <name>uiBehavior</name>
                     <value>readonly</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.EDUtb_IsActive__c</fieldItem>
+                <fieldItem>Record.IsActive__c</fieldItem>
                 <identifier>RecordIsActive_cField</identifier>
             </fieldInstance>
         </itemInstances>
@@ -250,7 +197,7 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.EDUtb_Active_Formula__c</fieldItem>
+                <fieldItem>Record.Active_Formula__c</fieldItem>
                 <identifier>RecordEDUtb_Active_Formula_cField</identifier>
             </fieldInstance>
         </itemInstances>
@@ -274,7 +221,7 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.EDUtb_Duplicate_Key__c</fieldItem>
+                <fieldItem>Record.Duplicate_Key__c</fieldItem>
                 <identifier>RecordDuplicate_Key__cField</identifier>
             </fieldInstance>
         </itemInstances>
@@ -320,7 +267,7 @@
                 <identifier>flexipage_richText</identifier>
                 <visibilityRule>
                     <criteria>
-                        <leftValue>{!Record.EDUtb_End_Date_Today__c}</leftValue>
+                        <leftValue>{!Record.End_Date_Today__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>true</rightValue>
                     </criteria>

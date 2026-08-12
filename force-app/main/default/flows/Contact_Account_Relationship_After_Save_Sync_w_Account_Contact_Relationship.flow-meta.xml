@@ -7,16 +7,16 @@
         <name>Add_New_Value_to_Roles_Field</name>
         <label>Add New Value to Roles Field</label>
         <locationX>182</locationX>
-        <locationY>1163</locationY>
+        <locationY>863</locationY>
         <assignmentItems>
             <assignToReference>r_AccountContactRelation.Roles</assignToReference>
             <operator>AddItem</operator>
             <value>
-                <elementReference>$Record.EDUtb_Contact_s_Relationship_to_Account__c</elementReference>
+                <elementReference>$Record.Contact_s_Relationship_to_Account__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>r_AccountContactRelation.EDUtb_Allowed_to_Create_or_Update__c</assignToReference>
+            <assignToReference>r_AccountContactRelation.Allowed_to_Create_or_Update__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <booleanValue>true</booleanValue>
@@ -30,30 +30,30 @@
         <name>Set_create_values_for_AccountContactRelation</name>
         <label>Set create values for AccountContactRelation</label>
         <locationX>446</locationX>
-        <locationY>1055</locationY>
+        <locationY>755</locationY>
         <assignmentItems>
             <assignToReference>r_AccountContactRelation.AccountId</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Record.EDUtb_Account__c</elementReference>
+                <elementReference>$Record.Account__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>r_AccountContactRelation.ContactId</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Record.EDUtb_Contact__c</elementReference>
+                <elementReference>$Record.Contact__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>r_AccountContactRelation.Roles</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>$Record.EDUtb_Contact_s_Relationship_to_Account__c</elementReference>
+                <elementReference>$Record.Contact_s_Relationship_to_Account__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>r_AccountContactRelation.EDUtb_Allowed_to_Create_or_Update__c</assignToReference>
+            <assignToReference>r_AccountContactRelation.Allowed_to_Create_or_Update__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <booleanValue>true</booleanValue>
@@ -68,7 +68,7 @@
         <name>Does_Value_Already_Exist_in_Roles_Field</name>
         <label>Does Value Already Exist in Roles Field?</label>
         <locationX>50</locationX>
-        <locationY>1055</locationY>
+        <locationY>755</locationY>
         <defaultConnector>
             <targetReference>Add_New_Value_to_Roles_Field</targetReference>
         </defaultConnector>
@@ -80,7 +80,7 @@
                 <leftValueReference>r_AccountContactRelation.Roles</leftValueReference>
                 <operator>Contains</operator>
                 <rightValue>
-                    <elementReference>$Record.EDUtb_Contact_s_Relationship_to_Account__c</elementReference>
+                    <elementReference>$Record.Contact_s_Relationship_to_Account__c</elementReference>
                 </rightValue>
             </conditions>
             <label>Yes</label>
@@ -90,7 +90,7 @@
         <name>Is_CAR_active</name>
         <label>Is CAR active?</label>
         <locationX>479</locationX>
-        <locationY>731</locationY>
+        <locationY>431</locationY>
         <defaultConnector>
             <targetReference>Remove_CAR_relationship_from_ACR_Roles</targetReference>
         </defaultConnector>
@@ -99,7 +99,7 @@
             <name>Yes3</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.EDUtb_IsActive__c</leftValueReference>
+                <leftValueReference>$Record.IsActive__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -112,42 +112,10 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Need_to_Update_Person_s_Household_Account_field</name>
-        <label>Need to Update Person&apos;s Household Account field?</label>
-        <locationX>726</locationX>
-        <locationY>323</locationY>
-        <defaultConnector>
-            <targetReference>Was_Active_Status_Changed</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>No</defaultConnectorLabel>
-        <rules>
-            <name>Yes10</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.EDUtb_Contact_s_Relationship_to_Account__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Household Member</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.EDUtb_Contact__r.EDUtb_Household_Account__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>$Record.EDUtb_Account__c</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Person_Account</targetReference>
-            </connector>
-            <label>Yes</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Was_AccountContactRelation_Found</name>
         <label>Was AccountContactRelation Found?</label>
         <locationX>248</locationX>
-        <locationY>947</locationY>
+        <locationY>647</locationY>
         <defaultConnector>
             <targetReference>Set_create_values_for_AccountContactRelation</targetReference>
         </defaultConnector>
@@ -172,16 +140,16 @@
         <name>Was_Active_Status_Changed</name>
         <label>Was Active Status Changed?</label>
         <locationX>726</locationX>
-        <locationY>623</locationY>
+        <locationY>323</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>Yes2</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record__Prior.EDUtb_IsActive__c</leftValueReference>
+                <leftValueReference>$Record__Prior.IsActive__c</leftValueReference>
                 <operator>NotEqualTo</operator>
                 <rightValue>
-                    <elementReference>$Record.EDUtb_IsActive__c</elementReference>
+                    <elementReference>$Record.IsActive__c</elementReference>
                 </rightValue>
             </conditions>
             <connector>
@@ -222,7 +190,7 @@
         <name>Create_AccountContactRelation</name>
         <label>Create AccountContactRelation</label>
         <locationX>446</locationX>
-        <locationY>1163</locationY>
+        <locationY>863</locationY>
         <connector>
             <targetReference>Update_Allowed_to_Create_Update_to_false</targetReference>
         </connector>
@@ -233,7 +201,7 @@
         <name>Get_AccountContactRelation_standard_obj_record</name>
         <label>Get AccountContactRelation (standard obj record)</label>
         <locationX>248</locationX>
-        <locationY>839</locationY>
+        <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Was_AccountContactRelation_Found</targetReference>
@@ -243,14 +211,14 @@
             <field>ContactId</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>$Record.EDUtb_Contact__c</elementReference>
+                <elementReference>$Record.Contact__c</elementReference>
             </value>
         </filters>
         <filters>
             <field>AccountId</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>$Record.EDUtb_Account__c</elementReference>
+                <elementReference>$Record.Account__c</elementReference>
             </value>
         </filters>
         <object>AccountContactRelation</object>
@@ -262,7 +230,7 @@
         <name>Update_AccountContactRelation</name>
         <label>Update AccountContactRelation</label>
         <locationX>182</locationX>
-        <locationY>1271</locationY>
+        <locationY>971</locationY>
         <connector>
             <targetReference>Update_Allowed_to_Create_Update_to_false</targetReference>
         </connector>
@@ -272,7 +240,7 @@
         <name>Update_Allowed_to_Create_Update_to_false</name>
         <label>Update Allowed to Create/Update to false</label>
         <locationX>248</locationX>
-        <locationY>1547</locationY>
+        <locationY>1247</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -282,42 +250,18 @@
             </value>
         </filters>
         <inputAssignments>
-            <field>EDUtb_Allowed_to_Create_or_Update__c</field>
+            <field>Allowed_to_Create_or_Update__c</field>
             <value>
                 <booleanValue>false</booleanValue>
             </value>
         </inputAssignments>
         <object>AccountContactRelation</object>
     </recordUpdates>
-    <recordUpdates>
-        <name>Update_Person_Account</name>
-        <label>Update Person Account</label>
-        <locationX>594</locationX>
-        <locationY>431</locationY>
-        <connector>
-            <targetReference>Was_Active_Status_Changed</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.EDUtb_Contact__c</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>EDUtb_Household_Account__c</field>
-            <value>
-                <stringValue>$Record.Account__c</stringValue>
-            </value>
-        </inputAssignments>
-        <object>Contact</object>
-    </recordUpdates>
     <start>
         <locationX>600</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Need_to_Update_Person_s_Household_Account_field</targetReference>
+            <targetReference>Was_Active_Status_Changed</targetReference>
         </connector>
         <object>Contact_Account_Relation__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
@@ -328,7 +272,7 @@
         <name>Remove_CAR_relationship_from_ACR_Roles</name>
         <label>Remove CAR relationship from ACR Roles</label>
         <locationX>710</locationX>
-        <locationY>839</locationY>
+        <locationY>539</locationY>
         <flowName>Subflow_Remove_CAR_relationship_from_ACR_Roles</flowName>
         <inputAssignments>
             <name>r_inputCAR</name>

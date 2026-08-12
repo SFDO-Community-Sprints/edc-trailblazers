@@ -2,28 +2,6 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <decisions>
-        <name>Do_Related_Person_Employment_Records_Exist</name>
-        <label>Do Related Person Employment Records Exist?</label>
-        <locationX>182</locationX>
-        <locationY>503</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Related_Person_Employment_Records_Exist</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Related_Person_Employment_Records</leftValueReference>
-                <operator>IsEmpty</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Delete_Related_Person_Employment_Records</targetReference>
-            </connector>
-            <label>Related Person Employment Records Exist</label>
-        </rules>
-    </decisions>
     <description>Removes the relationship of the deleted Contact Account Relationship from the corresponding Account Contact Relationship Roles picklist</description>
     <environments>Default</environments>
     <formulas>
@@ -32,10 +10,10 @@
         <expression>SUBSTITUTE(
      SUBSTITUTE(
           {!v_Roles},
-          TEXT({!$Record.EDUtb_Contact_s_Relationship_to_Account__c})+&apos;;&apos;,
+          TEXT({!$Record.Contact_s_Relationship_to_Account__c})+&apos;;&apos;,
           &apos;&apos;
      ),
-     &apos;;&apos;+TEXT({!$Record.EDUtb_Contact_s_Relationship_to_Account__c}),
+     &apos;;&apos;+TEXT({!$Record.Contact_s_Relationship_to_Account__c}),
      &apos;&apos;
 )</expression>
     </formulas>
@@ -60,44 +38,15 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
-    <recordDeletes>
-        <name>Delete_Related_Person_Employment_Records</name>
-        <label>Delete Related Person Employment Records</label>
-        <locationX>50</locationX>
-        <locationY>611</locationY>
-        <inputReference>Get_Related_Person_Employment_Records</inputReference>
-    </recordDeletes>
-    <recordLookups>
-        <name>Get_Related_Person_Employment_Records</name>
-        <label>Get Related Person Employment Records</label>
-        <locationX>182</locationX>
-        <locationY>395</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Do_Related_Person_Employment_Records_Exist</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>EDUtb_Contact_Account_Relation__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>$Record.Id</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>PersonEmployment</object>
-        <queriedFields>Id</queriedFields>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
     <start>
-        <locationX>56</locationX>
+        <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Remove_CAR_relationship_from_ACR_Roles</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>EDUtb_IsActive__c</field>
+            <field>IsActive__c</field>
             <operator>EqualTo</operator>
             <value>
                 <booleanValue>true</booleanValue>
@@ -112,11 +61,8 @@
         <description>If relevant, removes the relationship of the deleted CAR from the corresponding ACR Roles picklist</description>
         <name>Remove_CAR_relationship_from_ACR_Roles</name>
         <label>Remove CAR relationship from ACR Roles</label>
-        <locationX>182</locationX>
+        <locationX>176</locationX>
         <locationY>287</locationY>
-        <connector>
-            <targetReference>Get_Related_Person_Employment_Records</targetReference>
-        </connector>
         <flowName>Subflow_Remove_CAR_relationship_from_ACR_Roles</flowName>
         <inputAssignments>
             <name>r_inputCAR</name>
