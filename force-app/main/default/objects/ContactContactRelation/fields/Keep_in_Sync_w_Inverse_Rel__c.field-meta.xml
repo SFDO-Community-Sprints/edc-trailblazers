@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Keep_in_Sync_w_Inverse_Rel__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Caution: This field was installed from an Education Trailblazers Association solution. Before editing, ensure changes won&apos;t break automation.</description>
+    <inlineHelpText>If checked, keeps any updates to this record in sync with updates to the Inverse Relationship Record (if populated)</inlineHelpText>
+    <label>Keep in Sync w/Inverse Relationship</label>
+    <trackHistory>true</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact_s_Relationship_to_Account__c</fullName>
+    <inlineHelpText>Describes the way the Person is related to the Account
+
+***If you add values to this picklist, you must also add them to the &quot;role&quot; Multi-select picklist on Account Contact Relationship object***
+
+Caution: This field was installed from an Education Trailblazers Association solution. Before editing, ensure changes won&apos;t break automation.</inlineHelpText>
+    <label>Contact&apos;s Relationship to Account</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Contact_Account_Relationship_Type</valueSetName>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>End_Date_Today__c</fullName>
+    <description>Used as a conditional visibility filter for display text on the Lightning Record Page.</description>
+    <formula>EndDate = TODAY()</formula>
+    <label>End Date Today</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

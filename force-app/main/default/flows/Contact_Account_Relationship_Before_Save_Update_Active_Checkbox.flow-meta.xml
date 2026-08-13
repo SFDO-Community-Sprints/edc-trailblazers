@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Clear_End_Date</name>
+        <label>Clear End Date</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.End_Date__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <connector>
+            <targetReference>Deactivated_Set_End_Date</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_End_Date</name>
+        <label>Set End Date</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.End_Date__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_Yesterday</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Active_Active_Formula</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Active_Checkbox</name>
+        <label>Update Active Checkbox</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IsActive__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>f_ActiveFormula</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Active_Active_Formula</name>
+        <label>Active != Active Formula</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.IsActive__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>f_ActiveFormula</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Active_Checkbox</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Deactivated_Set_End_Date</name>
+        <label>Deactivated - Set End Date?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Active_Active_Formula</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Deactivated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.IsActive__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.IsActive__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.End_Date__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_End_Date</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Reactivated_Clear_End_Date</name>
+        <label>Reactivated - Clear End Date?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Deactivated_Set_End_Date</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes_Reactivated</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.IsActive__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record__Prior.IsActive__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.End_Date__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Clear_End_Date</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>This before-save Flow updates the &apos;Active&apos; checkbox based on the Start Date and End Date.</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>f_ActiveFormula</name>
+        <dataType>Boolean</dataType>
+        <expression>{!$Record.Start_Date__c} &lt;= TODAY() &amp;&amp; (ISBLANK({!$Record.End_Date__c}) || TODAY() &lt;= {!$Record.End_Date__c})
+||
+(ISBLANK({!$Record.End_Date__c}) &amp;&amp; ISBLANK({!$Record.Start_Date__c}))
+||
+(TODAY() &lt;= {!$Record.End_Date__c} &amp;&amp; ISBLANK({!$Record.Start_Date__c}))</expression>
+    </formulas>
+    <formulas>
+        <name>f_Yesterday</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()-1</expression>
+    </formulas>
+    <interviewLabel>Contact Account Relationship - Before Save - Update Active Checkbox {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Contact Account Relationship - Before Save - Update Active Checkbox</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Reactivated_Clear_End_Date</targetReference>
+        </connector>
+        <filterFormula>({!$Record.Start_Date__c} &lt;= TODAY() &amp;&amp; (ISBLANK({!$Record.End_Date__c}) || TODAY() &lt;= {!$Record.End_Date__c})
+||
+(ISBLANK({!$Record.End_Date__c}) &amp;&amp; ISBLANK({!$Record.Start_Date__c}))
+||
+(TODAY() &lt;= {!$Record.End_Date__c} &amp;&amp; ISBLANK({!$Record.Start_Date__c})))
+
+&lt;&gt; {!$Record.IsActive__c}</filterFormula>
+        <object>Contact_Account_Relation__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

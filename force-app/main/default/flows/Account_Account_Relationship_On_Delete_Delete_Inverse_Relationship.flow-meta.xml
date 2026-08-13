@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Deletes the &apos;Related Inverse Record&apos; when a Account Account Relationship is deleted.</description>
+    <environments>Default</environments>
+    <interviewLabel>Account Account Relationship - On Delete - Delete Inverse Relationship {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account Account Relationship - On Delete - Delete Inverse Relationship</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordDeletes>
+        <name>Delete_Inverse_Relationship</name>
+        <label>Delete Inverse Relationship</label>
+        <locationX>176</locationX>
+        <locationY>395</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.RelatedInverseRecordId</elementReference>
+            </value>
+        </filters>
+        <object>AccountAccountRelation</object>
+    </recordDeletes>
+    <recordUpdates>
+        <description>This prevents the flow from hitting a recursive error being that this runs before save, so both records would keep trying to delete the other.</description>
+        <name>Clear_Inverse_Field_on_the_other_Relationship</name>
+        <label>Clear Inverse Field on the other Relationship</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <connector>
+            <targetReference>Delete_Inverse_Relationship</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>RelatedInverseRecordId</field>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record.RelatedInverseRecord</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Clear_Inverse_Field_on_the_other_Relationship</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RelatedInverseRecordId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>AccountAccountRelation</object>
+        <recordTriggerType>Delete</recordTriggerType>
+        <triggerType>RecordBeforeDelete</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

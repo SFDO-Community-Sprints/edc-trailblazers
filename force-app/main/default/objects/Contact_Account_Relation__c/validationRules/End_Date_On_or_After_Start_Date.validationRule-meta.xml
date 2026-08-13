@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>End_Date_On_or_After_Start_Date</fullName>
+    <active>true</active>
+    <description>Ensures the End Date is populated with a date that is on or after the Start Date.</description>
+    <errorConditionFormula>NOT(ISBLANK(Start_Date__c)) &amp;&amp; NOT(ISBLANK(End_Date__c)) &amp;&amp; Start_Date__c &gt; End_Date__c</errorConditionFormula>
+    <errorDisplayField>End_Date__c</errorDisplayField>
+    <errorMessage>End Date must be on or after the Start Date.</errorMessage>
+</ValidationRule>
